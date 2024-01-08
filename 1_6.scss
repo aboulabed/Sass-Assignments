@@ -1,0 +1,167 @@
+// Assi 9
+// - Project_Folder
+// --- Helpers
+// ------ _vars.scss
+// ------ _functions.scss
+// --- Layout
+// ------ _header.scss
+// ------ _footer.scss
+
+@use 'Project_Folder/Helpers/functions';
+@use 'Project_Folder/Helpers/vars' as *;
+@use 'Project_Folder/Layout/footer';
+@use 'Project_Folder/Layout/header';
+
+
+// Assi 1
+.content  {
+  > .box {
+    padding: 15px;
+    > .title {
+      font-size: 18px;
+    }
+  }
+  .cat {
+    padding: 15px;
+  }
+  &.premium::before{
+    content: "Premium Box";
+  }
+  &.premium:hover {
+    background-color: #eee;
+  }
+}
+// Assi 2
+.class > .child{
+  padding: 10px;
+}
+.class >  {
+  .child {
+    padding: 10px;
+  }
+}
+.class{
+  > .child {
+    padding: 10px;
+  }
+}
+.class {
+  & > .child {
+    padding: 10px;
+  }
+}
+// Assi 3
+.class {
+  font : {
+    size:20px;
+    weight:bold;
+  }
+}
+// Assi 4
+
+.parent {
+  & + .sibling {
+    margin: auto {
+      top: 10px;
+    }
+    & ~ .last {
+      padding: 10px;
+    }
+  }
+}
+
+// .parent + .sibling{
+//   margin:auto;
+//   margin-top: 10px;
+// }
+
+// .parent + .sibling ~ .last {
+//   padding: 10px;
+// }
+
+// Assi 5
+.widget {
+  background-color: white;
+  padding: 20px;
+}
+.main-border {
+  border: 1px solid #CCC
+}
+.my-class {
+  @extend .widget;
+  @extend .main-border;
+  font-weight: bold;
+  margin: 20px auto;
+}
+// Assi 6
+%widget {
+  background-color: white;
+  padding: 20px;
+}
+%main-border {
+  border: 1px solid #CCC
+}
+.my-class {
+  @extend %widget;
+  @extend %main-border;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+// Assi 7
+
+.box h2 {
+  font-size: 20px;
+}
+.box p {
+  @extend h2
+}
+
+$mobile-screen: 'max-width: 575px';
+@media ($mobile-screen) {
+  .box h2 {
+    font-size: 16px;
+  }
+  .box p {
+    @extend h2
+  }
+  .box h2 span {
+    font-weight: bold;
+  }
+  .box p span {
+    @extend span
+  }
+  
+};
+
+// Assi 8
+
+// The Code
+// Do Not Edit Here
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+$link-color: $green;
+$link-hover: $red;
+// Do Not Edit Here
+.box a {
+  color: $link-color;
+  &:hover {
+    color: $link-hover;
+  }
+}
+
+// Assi 10
+
+.box {
+  font-size: 20px;
+  &-holder {
+    width: 1000px;
+    &-content {
+      margin: auto;
+    }
+  }
+}
+
+

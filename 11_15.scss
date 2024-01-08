@@ -1,0 +1,114 @@
+// Assi 1
+
+@mixin arrow($direction) {
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+  #{if($direction == "top" or $direction == "bottom", left, top)}: 50%;
+  transform: translate#{if($direction == "top" or $direction == "bottom", X, Y)
+    }(-50%);
+  #{$direction}: -40px;
+  @if $direction == "top" {
+    border-bottom-color: red;
+  } @else if $direction == "right" {
+    border-left-color: red;
+  } @else if $direction == "bottom" {
+    border-top-color: red;
+  } @else if $direction == "left" {
+    border-right-color: red;
+  }
+}
+
+.element {
+  &:before {
+    @include arrow("bottom");
+  }
+}
+
+// Assi 2
+
+$grid-cols: 16;
+
+@for $i from 1 through $grid-cols {
+  .col-#{$i} {
+    width: percentage($i / $grid-cols);
+  }
+}
+
+// Assi 3
+
+$names: "books" 20px red 18, "games" 30px green 20, "dvds" 20px blue;
+
+@each $nam, $pad, $col, $fo in $names {
+  .#{$nam} {
+    padding: $pad;
+    border-bottom: 2px solid $col;
+    font-size: if($fo == null, 16px, #{$fo}px);
+    color: #444;
+  }
+}
+
+// Assi 4
+
+$init: 1;
+
+@while $init <= 5 {
+  .circle-#{100 * $init} {
+    width: 100px * $init;
+    height: 100px * $init;
+    border-radius: (100px * $init) / 2;
+  }
+  $init: $init + 1;
+}
+
+// Assi 5
+
+@for $i from 1 through 5 {
+  .circle-#{100 * $i} {
+    width: 100px * $i;
+    height: 100px * $i;
+    border-radius: (100px * $i) / 2;
+  }
+}
+
+// Assi 6
+
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+textarea {
+  @include placeholder {
+    color: #777;
+  }
+}
+
+// Assi 7
+
+@mixin flex-center($dime: 400px) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:$dime;
+}
+
+.box-one {
+  @include flex-center(450px);
+}
+.box-two {
+  @include flex-center;
+}

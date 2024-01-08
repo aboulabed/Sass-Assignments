@@ -1,0 +1,27 @@
+.school {
+  padding: 20px;
+  margin-left: 20px;
+  direction: "ltr";
+}
+
+.school .school-box {
+  padding: 10px;
+}
+
+.school:hover .school-box {
+  background-color: #eee;
+}
+
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: red */
+/* Website Theme Alternate Color Is: blue */
+.class {
+  color: red;
+}
+
+.box {
+  text-align: center;
+  background-color: #eee;
+}
+
+/*# sourceMappingURL=7_10.css.map */

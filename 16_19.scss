@@ -1,0 +1,30 @@
+// Assi 1
+
+$num: 2;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@for $i from 1 through 5 {
+  .width-#{$start} {
+    width: #{$start}px;
+    width: #{double($start)}px;
+  }
+  $start: double($start);
+}
+
+// Assi 2
+@function get-total($num...) {
+  $total: 0;
+  @each $nm in $num {
+    $total: $total + $nm;
+  }
+  @return $total
+}
+
+.box {
+  top: get-total(100, 50, 20);
+  right: get-total(100, 50);
+}
